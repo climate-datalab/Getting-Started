@@ -25,8 +25,19 @@ This is sometimes referred to as the "single-variable" approach, and is a very c
 
 ### Model Grids and Lat/Lon Coordinates
 
+When you open a climate model output file, you'll notice that it contains information on the latitude and longitude associated with each _grid point_. All models have some form of grid, describing how the planet has been broken up into tiles over which the relevant equations for each variable can be evaluated. There are many different types of grid, so it's good to be aware of how the data you're working with are organized!
+
+Some things to consider:
+
+* Is the lat/lon information ONE or TWO-dimensional?
+* How far apart are adjacent grid points (in other words, what is the _resolution_ of your model?)
+
 
 ### Calendars Used by Climate Models
 
+Just to make things more interesting, climate model also often use _calendars_ which are different from our "normal" conception of how to measure dates. This is usually done for reasons of making the computation easier within the model, but can cause some headaches when working with the data after the fact, since to use 'standard' time processing packages in software like R or Python, one often needs to perform a conversion. 
 
-### Other Coordinates: Depth/Altitude
+Some things to consider regarding climate model calendars:
+
+* Do they include a leap year? (Many models adopt a strict 365-day calendar with no leap days)
+* What is the starting date? The "time zero" for models may be quite different: often, time is measured in units of "time since xxx", where xxx is the date at which the simulation began. In order to compare with observations or another model simulation, one must therefore correctly account for this effect. 
